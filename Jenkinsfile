@@ -15,8 +15,7 @@ pipeline {
                  GITHUB_TOKEN = credentials('github-token')
        }
        stage('Release') {
-            steps {
-                sh 'token="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"'
+           steps {
                 sh 'tag=$(git describe --tags)'
                 sh 'message="$(git for-each-ref refs/tags/$tag --format=\'%(contents)\')"'
                 sh 'name=$(echo "$message" | head -n1)'
